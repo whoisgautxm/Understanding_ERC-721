@@ -124,6 +124,7 @@ interface ERC165{
     ///Standardized Identification: Interfaces are identified by their unique 4-byte identifier, commonly represented by the first four bytes of the keccak256 hash of the interface name or function signature.
 
     function supportsInterface(bytes4 interfaceID) external view returns (bool);
+}
 
 
 interface ERC721TokenReceiver{
@@ -134,15 +135,8 @@ interface ERC721TokenReceiver{
     ///_data: Additional data with no specified format.
     ///returns (bytes4): The function returns a bytes4 value 0x150b7a02 if the receiving contract accepts the transfer. If the receiving contract doesn't accept the transfer, it must throw an error.
 
-    function onERC721Received(address _operator, address _from, uint256 _tokenId, bytes calldata _data) external returns(bytes4);
+    function onERC721Received(address _operator, address _from, uint256 _tokenId, bytes calldata _data) external returns(bytes4);}
 
-}
-    
-}
-
-
-
-    
 }
 ```
 
