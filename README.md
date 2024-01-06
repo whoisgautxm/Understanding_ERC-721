@@ -55,10 +55,10 @@ interface ERC721 /* is ERC165 */ {
 
 
     ///Safe Transfer: The safeTransferFrom function is designed to securely transfer ownership of an NFT. It ensures that the receiving address _to is capable of receiving NFTs before the transfer
-    ///Checks before Transfer: When executing the transfer, this function checks if _from is the current owner, if _to is a valid address (not zero), and if _tokenId represents a valid NFT. Additionally, it verifies if _to is a smart contract by checking its code size.
+    ///Checks before Transfer: When executing the transfer, this function checks if _from is the current owner, if _to is a valid address (not zero), and if _tokenId represents a valid NFT. Additionally, it             verifies if _to is a smart contract by checking its code size.
     ///Recipient Contract Validation: If the recipient address _to is a smart contract, it verifies if the contract supports the ERC721TokenReceiver interface by calling the onERC721Received function 
-    in that contract. If the recipient contract doesn't support this interface or doesn't implement the onERC721Received function correctly, the transfer will fail.
-    ///Handling Additional Data: The version of the function that includes bytes data parameter allows additional data to be passed, which can be interpreted by the recipient contract's onERC721Received function if needed.
+        in that contract. If the recipient contract doesn't support this interface or doesn't implement the onERC721Received function correctly, the transfer will fail.
+    ///Handling Additional Data: The version of the function that includes bytes data parameter allows additional data to be passed, which can be interpreted by the recipient contract's onERC721Received function         if needed.
 
     function safeTransferFrom(address _from, address _to, uint256 _tokenId, bytes calldata data) external payable;
 
@@ -146,14 +146,14 @@ interface ERC721TokenReceiver{
 }
 ```
 
-##Difference between Event Transfer and Function Safe-transfer:
-#####Purpose:
+## Difference between Event Transfer and Function Safe-transfer:
+##### Purpose:
 The safeTransferFrom function is a method used to initiate and ensure a secure transfer of ownership, performing checks to prevent unintended or unsafe transfers. In contrast, the Transfer event is a notification mechanism that signals whenever ownership changes, regardless of the method used.
 
-#####Implementation:
+##### Implementation:
  The safeTransferFrom function is part of the contract's functionality, executed when a transfer is intended, while the Transfer event is emitted internally within the contract logic to signal ownership changes.
 
-##Difference between Function SafeTransferFrom and Function TransferFrom:
+## Difference between Function SafeTransferFrom and Function TransferFrom:
 - 'transferFrom' is less secure compared to safeTransferFrom as it doesn’t check if the recipient is capable of receiving tokens, potentially resulting in lost tokens if transferred to an incompatible address.
 - Unlike safeTransferFrom, transferFrom doesn't require the recipient address to support the ERC721TokenReceiver interface or have a specific onERC721Received function.
 
